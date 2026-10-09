@@ -26,7 +26,7 @@ Tree tree_new ();
 void tree_delete (Tree tree, void (*delete) (void *));
 
 // A Faire
-bool tree_remove(Tree * ptree, const void *data, size_t size);
+bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(const void *, const void *));
 
 // Nouveau
 Tree tree_create (const void *data, size_t size, Tree parent);

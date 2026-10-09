@@ -25,22 +25,121 @@ tree_delete (Tree tree, void (*delete) (void *))
     }
 }
 
-bool tree_remove(Tree * ptree, const void *data, size_t size) {
-  if(ptree == NULL || *ptree = NULL || data == NULL || *data == NULL || size <= 0) {
-    return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(const void *, const void *)) {
+  if(ptree == NULL || *ptree == NULL || data == NULL || size <= 0) {
+    return false;
   }
 
-  if(ptree->data == data){
-    
-    return 1;
+  if(compare(*ptree)->data, data) == 0){
+
+    // Si au moins 1 enfant gauche:
+    if ((*ptree)->left != NULL) {
+
+      // Si 2 enfants:
+      if ((*ptree)->right != NULL) {
+        Tree remplacant = (*ptree)->right;
+        
+        // Chercher le remplacant:
+        while(remplacant->left != NULL) {
+          remplacant = remplacant->left;
+        }
+        
+        // échange de donnée;
+        void *donnee_temporaire = (*ptree)->data;
+        (*ptree)->data = remplacant->data;
+        remplacant->data = donnee_temporaire;
+
+        tree_remove(&((*ptree)->right), donnee_temporaire, size, compare);
+      }
+
+      // Si 1 enfant gauche:
+      else {
+        Tree temporaireTree = *ptree;
+        *ptree = (*ptree)->left;
+
+        (*ptree)->parent = temporaireTree->parent;
+
+        free(temporaireTree->data);
+        free(temporaireTree);
+      }
+    }
+
+    // Si seulement enfant droite:
+    else if ((*ptree)->right != NULL) {
+      Tree temporaireTree = *ptree;
+      *ptree = (*ptree)->left;
+
+      (*ptree)->parent = temporaireTree->parent;
+
+      free(temporaireTree->data);
+      free(temporaireTree);
+    }
+
+    // Si aucun enfant:
+    else {
+      Tree temporaireTree = *ptree;
+      (*ptree) = NULL;
+
+      free(temporaireTree->data);
+      free(temporaireTree);
+    }
+
+    return true;
   }
-  else if (ptree->data < data) {
-    return tree_remove(ptree->right, data, size);
+  else if ((*ptree)->data < data && (*ptree)->right != NULL) {
+    return tree_remove((*ptree)->right, data, size);
   }
-  else if (ptree->dara > data) {
-    return tree_remove(ptree->left, data, size);
+  else if ((*ptree)->data > data && (*ptree)->left != NULL) {
+    return tree_remove((*ptree)->left, data, size);
+  }
+  else {
+    return false;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Tree tree_create (const void *data, size_t size, Tree parent) {
   Tree tree = (Tree) malloc(sizeof(*tree));
