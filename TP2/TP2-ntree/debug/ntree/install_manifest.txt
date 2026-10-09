@@ -1,0 +1,4 @@
+/usr/local/lib/libntree.so
+/usr/local/include/ntree.h
+/usr/local/share/pkgconfig/ntree.pc
+/usr/local/cmake/NTreeConfig.cmake

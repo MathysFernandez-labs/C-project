@@ -1,0 +1,1 @@
+/usr/bin/cc -g -Wl,--dependency-file=CMakeFiles/test-list.dir/link.d "CMakeFiles/test-list.dir/test-list.c.o" -o test-list  -Wl,-rpath,/home/mathys/Bureau/S5/SDD/SDD-S5/TP1/TP-hash-etudiants/debug/list liblist.so

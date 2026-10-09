@@ -1,0 +1,14 @@
+prefix=/home/mathys/Bureau/S5/SDD/TP1/TP-hash-etudiants/debug/tmp
+bindir=${prefix}/bin
+staticlibdir=${prefix}/lib
+sharedlibdir=${prefix}/lib
+includedir=${prefix}/include
+
+Version: 
+
+Name: list
+Description: List library
+
+Requires:
+Libs: -L${bindir} -L${staticlibdir} -L${sharedlibdir} -llist
+Cflags: -I${includedir}
