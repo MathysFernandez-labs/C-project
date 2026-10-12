@@ -25,7 +25,18 @@ tree_delete (Tree tree, void (*delete) (void *))
     }
 }
 
+TypeCouleur getCouleur (Tree tree) {
+  if(tree == NULL) {
+    return BLACK;
+  }
+  else {
+    return tree->couleur.couleur;
+  }
+}
 
+void reequilibrage (Tree * ptree) {
+
+}
 
 
 
@@ -54,7 +65,7 @@ bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(con
     return false;
   }
 
-  if(compare(*ptree)->data, data) == 0){
+  if(compare((*ptree)->data, data) == 0){
 
     // Si au moins 1 enfant gauche:
     if ((*ptree)->left != NULL) {
@@ -83,6 +94,9 @@ bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(con
 
         (*ptree)->parent = temporaireTree->parent;
 
+        if(temporaireTree->couleur == NOIR) {
+          reequilibrage(&(*ptree));
+        }
         free(temporaireTree->data);
         free(temporaireTree);
       }
@@ -91,9 +105,13 @@ bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(con
     // Si seulement enfant droite:
     else if ((*ptree)->right != NULL) {
       Tree temporaireTree = *ptree;
-      *ptree = (*ptree)->left;
+      *ptree = (*ptree)->right;
 
       (*ptree)->parent = temporaireTree->parent;
+
+      if(temporaireTree->couleur == NOIR) {
+        reequilibrage(&(*ptree));
+      }
 
       free(temporaireTree->data);
       free(temporaireTree);
@@ -104,17 +122,21 @@ bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(con
       Tree temporaireTree = *ptree;
       (*ptree) = NULL;
 
+      if(temporaireTree->couleur == NOIR) {
+        reequilibrage(&(*ptree));
+      }
+
       free(temporaireTree->data);
       free(temporaireTree);
     }
 
     return true;
   }
-  else if ((*ptree)->data < data && (*ptree)->right != NULL) {
-    return tree_remove((*ptree)->right, data, size);
+  else if (compare((*ptree)->data, data) < 0 && (*ptree)->right != NULL) {
+    return tree_remove(&(*ptree)->right, data, size, compare);
   }
-  else if ((*ptree)->data > data && (*ptree)->left != NULL) {
-    return tree_remove((*ptree)->left, data, size);
+  else if (compare((*ptree)->data, data) > 0 && (*ptree)->left != NULL) {
+    return tree_remove(&(*ptree)->left, data, size, compare);
   }
   else {
     return false;
