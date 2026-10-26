@@ -277,7 +277,7 @@ bool tree_remove(Tree *ptree, const void *data, size_t size, int (*compare)(cons
 
   // violation couleur supprimé ? 
   if (couleur_z_supprime == BLACK) {
-    // On fait appel à la fonction de rééquilibrage
+    // On fait appel à la fonction de réequilibrage
     tree_delete_reequilibrage(ptree, x, parent_de_x);
   }
 
@@ -556,7 +556,7 @@ tree_search (Tree tree,
         case 1:
           return tree_search (tree->right, data, compare);
         default:
-            return NULL; // RAJOUTE CAR WARNING !!!
+            return NULL;
         }
     }
   else
