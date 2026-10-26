@@ -42,6 +42,6 @@ try:
     plt.show()
 
 except FileNotFoundError:
-    print("Erreur : Le fichier 'mesures_rb.txt' est introuvable. Exécutez d'abord votre programme C.")
+    print("Erreur : Le fichier 'mesures_rb.txt' est introuvable.")
     
     
