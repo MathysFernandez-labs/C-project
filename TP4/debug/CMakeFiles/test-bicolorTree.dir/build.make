@@ -53,10 +53,10 @@ RM = /snap/cmake/1572/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src
+CMAKE_SOURCE_DIR = /home/mathys/Bureau/project/C-project/TP4/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug
+CMAKE_BINARY_DIR = /home/mathys/Bureau/project/C-project/TP4/debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test-bicolorTree.dir/depend.make
@@ -72,33 +72,33 @@ include CMakeFiles/test-bicolorTree.dir/flags.make
 CMakeFiles/test-bicolorTree.dir/codegen:
 .PHONY : CMakeFiles/test-bicolorTree.dir/codegen
 
-CMakeFiles/test-bicolorTree.dir/test-tree.c.o: CMakeFiles/test-bicolorTree.dir/flags.make
-CMakeFiles/test-bicolorTree.dir/test-tree.c.o: /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/test-tree.c
-CMakeFiles/test-bicolorTree.dir/test-tree.c.o: CMakeFiles/test-bicolorTree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test-bicolorTree.dir/test-tree.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test-bicolorTree.dir/test-tree.c.o -MF CMakeFiles/test-bicolorTree.dir/test-tree.c.o.d -o CMakeFiles/test-bicolorTree.dir/test-tree.c.o -c /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/test-tree.c
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o: CMakeFiles/test-bicolorTree.dir/flags.make
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o: /home/mathys/Bureau/project/C-project/TP4/src/test-bicolorTree.c
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o: CMakeFiles/test-bicolorTree.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o -MF CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o.d -o CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o -c /home/mathys/Bureau/project/C-project/TP4/src/test-bicolorTree.c
 
-CMakeFiles/test-bicolorTree.dir/test-tree.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/test-bicolorTree.dir/test-tree.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/test-tree.c > CMakeFiles/test-bicolorTree.dir/test-tree.c.i
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mathys/Bureau/project/C-project/TP4/src/test-bicolorTree.c > CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.i
 
-CMakeFiles/test-bicolorTree.dir/test-tree.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test-bicolorTree.dir/test-tree.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/test-tree.c -o CMakeFiles/test-bicolorTree.dir/test-tree.c.s
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mathys/Bureau/project/C-project/TP4/src/test-bicolorTree.c -o CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.s
 
 # Object files for target test-bicolorTree
 test__bicolorTree_OBJECTS = \
-"CMakeFiles/test-bicolorTree.dir/test-tree.c.o"
+"CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o"
 
 # External object files for target test-bicolorTree
 test__bicolorTree_EXTERNAL_OBJECTS =
 
-test-bicolorTree: CMakeFiles/test-bicolorTree.dir/test-tree.c.o
+test-bicolorTree: CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o
 test-bicolorTree: CMakeFiles/test-bicolorTree.dir/build.make
 test-bicolorTree: CMakeFiles/test-bicolorTree.dir/compiler_depend.ts
 test-bicolorTree: libtree.so
 test-bicolorTree: CMakeFiles/test-bicolorTree.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable test-bicolorTree"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable test-bicolorTree"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test-bicolorTree.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -110,6 +110,6 @@ CMakeFiles/test-bicolorTree.dir/clean:
 .PHONY : CMakeFiles/test-bicolorTree.dir/clean
 
 CMakeFiles/test-bicolorTree.dir/depend:
-	cd /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug/CMakeFiles/test-bicolorTree.dir/DependInfo.cmake "--color=$(COLOR)" test-bicolorTree
+	cd /home/mathys/Bureau/project/C-project/TP4/debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mathys/Bureau/project/C-project/TP4/src /home/mathys/Bureau/project/C-project/TP4/src /home/mathys/Bureau/project/C-project/TP4/debug /home/mathys/Bureau/project/C-project/TP4/debug /home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/test-bicolorTree.dir/DependInfo.cmake "--color=$(COLOR)" test-bicolorTree
 .PHONY : CMakeFiles/test-bicolorTree.dir/depend
 

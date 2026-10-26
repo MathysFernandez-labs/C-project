@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test-bicolorTree.dir/link.d"
-  "CMakeFiles/test-bicolorTree.dir/test-tree.c.o"
-  "CMakeFiles/test-bicolorTree.dir/test-tree.c.o.d"
+  "CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o"
+  "CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o.d"
   "test-bicolorTree"
   "test-bicolorTree.pdb"
 )

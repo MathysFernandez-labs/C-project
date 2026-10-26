@@ -22,7 +22,7 @@ struct _TreeNode{
 
 
 Tree tree_new ();
-
+void tree_delete_reequilibrage(Tree *racine, Tree x, Tree parent_de_x);
 void tree_delete (Tree tree, void (*delete) (void *));
 
 // A Faire
@@ -58,6 +58,8 @@ void tree_post_order (Tree tree,
 size_t tree_height (Tree tree);
 
 size_t tree_size (Tree tree);
+
+void tree_insert_reequilibrage(Tree *racine, Tree x);
 
 // A Faire
 bool tree_insert_sorted(Tree * ptree,

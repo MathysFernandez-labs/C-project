@@ -57,10 +57,10 @@ RM = /snap/cmake/1572/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src
+CMAKE_SOURCE_DIR = /home/mathys/Bureau/project/C-project/TP4/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug
+CMAKE_BINARY_DIR = /home/mathys/Bureau/project/C-project/TP4/debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug/CMakeFiles /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles /home/mathys/Bureau/project/C-project/TP4/debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -197,29 +197,29 @@ test-bicolorTree/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/build
 .PHONY : test-bicolorTree/fast
 
-test-tree.o: test-tree.c.o
-.PHONY : test-tree.o
+test-bicolorTree.o: test-bicolorTree.c.o
+.PHONY : test-bicolorTree.o
 
 # target to build an object file
-test-tree.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-tree.c.o
-.PHONY : test-tree.c.o
+test-bicolorTree.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o
+.PHONY : test-bicolorTree.c.o
 
-test-tree.i: test-tree.c.i
-.PHONY : test-tree.i
+test-bicolorTree.i: test-bicolorTree.c.i
+.PHONY : test-bicolorTree.i
 
 # target to preprocess a source file
-test-tree.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-tree.c.i
-.PHONY : test-tree.c.i
+test-bicolorTree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.i
+.PHONY : test-bicolorTree.c.i
 
-test-tree.s: test-tree.c.s
-.PHONY : test-tree.s
+test-bicolorTree.s: test-bicolorTree.c.s
+.PHONY : test-bicolorTree.s
 
 # target to generate assembly for a file
-test-tree.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-tree.c.s
-.PHONY : test-tree.c.s
+test-bicolorTree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-bicolorTree.dir/build.make CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.s
+.PHONY : test-bicolorTree.c.s
 
 tree.o: tree.c.o
 .PHONY : tree.o
@@ -260,9 +260,9 @@ help:
 	@echo "... test"
 	@echo "... test-bicolorTree"
 	@echo "... tree"
-	@echo "... test-tree.o"
-	@echo "... test-tree.i"
-	@echo "... test-tree.s"
+	@echo "... test-bicolorTree.o"
+	@echo "... test-bicolorTree.i"
+	@echo "... test-bicolorTree.s"
 	@echo "... tree.o"
 	@echo "... tree.i"
 	@echo "... tree.s"
