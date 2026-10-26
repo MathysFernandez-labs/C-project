@@ -167,27 +167,6 @@ int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*dele
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Tree
 tree_create (const void *data, size_t size, int balance, Tree parent)
 {

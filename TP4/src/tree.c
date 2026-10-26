@@ -25,124 +25,268 @@ tree_delete (Tree tree, void (*delete) (void *))
     }
 }
 
-TypeCouleur getCouleur (Tree tree) {
-  if(tree == NULL) {
-    return BLACK;
-  }
-  else {
-    return tree->couleur.couleur;
-  }
-}
-
-void reequilibrage (Tree * ptree) {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-bool tree_remove(Tree * ptree, const void *data, size_t size, int (*compare)(const void *, const void *)) {
-  if(ptree == NULL || *ptree == NULL || data == NULL || size <= 0) {
-    return false;
-  }
-
-  if(compare((*ptree)->data, data) == 0){
-
-    // Si au moins 1 enfant gauche:
-    if ((*ptree)->left != NULL) {
-
-      // Si 2 enfants:
-      if ((*ptree)->right != NULL) {
-        Tree remplacant = (*ptree)->right;
-        
-        // Chercher le remplacant:
-        while(remplacant->left != NULL) {
-          remplacant = remplacant->left;
-        }
-        
-        // échange de donnée;
-        void *donnee_temporaire = (*ptree)->data;
-        (*ptree)->data = remplacant->data;
-        remplacant->data = donnee_temporaire;
-
-        tree_remove(&((*ptree)->right), donnee_temporaire, size, compare);
-      }
-
-      // Si 1 enfant gauche:
-      else {
-        Tree temporaireTree = *ptree;
-        *ptree = (*ptree)->left;
-
-        (*ptree)->parent = temporaireTree->parent;
-
-        if(temporaireTree->couleur == NOIR) {
-          reequilibrage(&(*ptree));
-        }
-        free(temporaireTree->data);
-        free(temporaireTree);
-      }
+// Fonction pour retourner la couleur du noeud
+// Noir si NULL car une feuille
+TypeCouleur couleur_noeud(Tree n) {
+    if (n == NULL) {
+      return BLACK;
     }
-
-    // Si seulement enfant droite:
-    else if ((*ptree)->right != NULL) {
-      Tree temporaireTree = *ptree;
-      *ptree = (*ptree)->right;
-
-      (*ptree)->parent = temporaireTree->parent;
-
-      if(temporaireTree->couleur == NOIR) {
-        reequilibrage(&(*ptree));
-      }
-
-      free(temporaireTree->data);
-      free(temporaireTree);
-    }
-
-    // Si aucun enfant:
     else {
-      Tree temporaireTree = *ptree;
-      (*ptree) = NULL;
-
-      if(temporaireTree->couleur == NOIR) {
-        reequilibrage(&(*ptree));
-      }
-
-      free(temporaireTree->data);
-      free(temporaireTree);
+      return n->couleur.couleur;
     }
-
-    return true;
-  }
-  else if (compare((*ptree)->data, data) < 0 && (*ptree)->right != NULL) {
-    return tree_remove(&(*ptree)->right, data, size, compare);
-  }
-  else if (compare((*ptree)->data, data) > 0 && (*ptree)->left != NULL) {
-    return tree_remove(&(*ptree)->left, data, size, compare);
-  }
-  else {
-    return false;
-  }
 }
 
+// Fonction pour retrouver la racine
+// return NULL si noeud est NULL
+Tree trouver_racine(Tree noeud) {
+    if (noeud == NULL) {
+      return NULL;
+    }
+
+    while (noeud->parent != NULL) {
+        noeud = noeud->parent;
+    }
+
+    return noeud;
+}
+
+
+
+
+void rotate_L(Tree *racine, Tree x) {
+    if (x == NULL || x->right == NULL) return;
+    
+    Tree y = x->right;
+    x->right = y->left;
+    
+    if (y->left != NULL) {
+        y->left->parent = x;
+    }
+    
+    y->parent = x->parent;
+    
+    if (x->parent == NULL) {
+        *racine = y;
+    } else if (x == x->parent->left) {
+        x->parent->left = y;
+    } else {
+        x->parent->right = y;
+    }
+    
+    y->left = x;
+    x->parent = y;
+}
+
+void rotate_R(Tree *racine, Tree x) {
+    if (x == NULL || x->left == NULL) return;
+    
+    Tree y = x->left;
+    x->left = y->right;
+    
+    if (y->right != NULL) {
+        y->right->parent = x;
+    }
+    
+    y->parent = x->parent;
+    
+    if (x->parent == NULL) {
+        *racine = y;
+    } else if (x == x->parent->right) {
+        x->parent->right = y;
+    } else {
+        x->parent->left = y;
+    }
+    
+    y->right = x;
+    x->parent = y;
+}
+
+
+
+
+// paramètres: 
+//  - racine, 
+//  - l'arbre actuel, 
+//  - arbre du parent de x
+void tree_delete_reequilibrage(Tree *racine, Tree x, Tree parent_de_x) {
+    Tree w;
+
+    while (x != *racine && couleur_noeud(x) == BLACK) {
+        
+        if (x == parent_de_x->left) {
+            w = parent_de_x->right;
+
+            if (couleur_noeud(w) == RED) {
+                w->couleur.couleur = BLACK;
+                parent_de_x->couleur.couleur = RED;
+                rotate_L(racine, parent_de_x);
+                w = parent_de_x->right;
+            }
+
+            if (couleur_noeud(w->left) == BLACK && couleur_noeud(w->right) == BLACK) {
+                if (w != NULL) {
+                    w->couleur.couleur = RED;
+                }
+                x = parent_de_x; 
+                parent_de_x = x->parent;
+            } 
+            else {
+                if (couleur_noeud(w->right) == BLACK) {
+                    if (w->left != NULL) {
+                        w->left->couleur.couleur = BLACK;
+                    }
+                    w->couleur.couleur = RED;
+                    rotate_R(racine, w);
+                    w = parent_de_x->right;
+                }
+
+                if (w != NULL) {
+                    w->couleur.couleur = parent_de_x->couleur.couleur;
+                }
+                parent_de_x->couleur.couleur = BLACK;
+                
+                if (w != NULL && w->right != NULL) {
+                    w->right->couleur.couleur = BLACK;
+                }
+                
+                rotate_L(racine, parent_de_x);
+                
+                x = *racine;
+            }
+        } 
+        
+        else {
+            w = parent_de_x->left;
+
+            if (couleur_noeud(w) == RED) {
+                w->couleur.couleur = BLACK;
+                parent_de_x->couleur.couleur = RED;
+                rotate_R(racine, parent_de_x);
+                w = parent_de_x->left;
+            }
+
+            if (couleur_noeud(w->right) == BLACK && couleur_noeud(w->left) == BLACK) {
+                if (w != NULL) {
+                    w->couleur.couleur = RED;
+                }
+                x = parent_de_x;
+                parent_de_x = x->parent;
+            } 
+            else {
+                if (couleur_noeud(w->left) == BLACK) {
+                    if (w->right != NULL) {
+                        w->right->couleur.couleur = BLACK;
+                    }
+                    w->couleur.couleur = RED;
+                    rotate_L(racine, w);
+                    w = parent_de_x->left;
+                }
+
+                if (w != NULL) {
+                    w->couleur.couleur = parent_de_x->couleur.couleur;
+                }
+                parent_de_x->couleur.couleur = BLACK;
+                
+                if (w != NULL && w->left != NULL) {
+                    w->left->couleur.couleur = BLACK;
+                }
+                
+                rotate_R(racine, parent_de_x);
+                
+                x = *racine;
+            }
+        }
+    }
+
+    if (x != NULL) {
+        x->couleur.couleur = BLACK;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool tree_remove(Tree *ptree, const void *data, size_t size, int (*compare)(const void *, const void *)) {
+  if (ptree == NULL || *ptree == NULL || data == NULL || size <= 0) {
+      return false;
+  }
+
+  // Recherche du noeud à supprimer
+  Tree z = *ptree;
+  while (z != NULL) {
+    int cmp = compare(data, z->data);
+    if (cmp == 0) {
+        break;
+    } else if (cmp == -1) {
+        z = z->left;
+    } else {
+        z = z->right;
+    }
+  }
+
+  // Si la donnée n'est pas dans l'arbre
+  if (z == NULL) {
+      return false;
+  }
+
+  // Si le noeud a deux enfants, on trouve son successeur
+  if (z->left != NULL && z->right != NULL) {
+    Tree y = z->right;
+    while (y->left != NULL) {
+        y = y->left;
+    }
+    
+    // Échange de données
+    void *donnee_temporaire = z->data;
+    z->data = y->data;
+    y->data = donnee_temporaire;
+    
+    z = y; 
+  }
+
+  // Now, z a au maximum un enfant
+  Tree x = (z->left != NULL) ? z->left : z->right;
+  Tree parent_de_x = z->parent;
+  TypeCouleur couleur_z_supprime = couleur_noeud(z);
+  
+  if (x != NULL) {
+    x->parent = z->parent;
+  }
+
+  if (z->parent == NULL) {
+      *ptree = x;
+  } else if (z == z->parent->left) {
+      z->parent->left = x;
+  } else {
+      z->parent->right = x;
+  }
+
+  // violation couleur supprimé ?
+  if (couleur_z_supprime == BLACK) {
+    // On fait appel à la fonction de réequilibrage
+    tree_delete_reequilibrage(ptree, x, parent_de_x);
+  }
+
+  // Libération
+  free(z->data);
+  free(z);
+
+  return true;
+}
 
 
 
@@ -307,37 +451,92 @@ tree_size (Tree tree)
     return 0;
 }
 
-bool
-tree_insert_sorted (Tree * ptree,
-                    const void *data,
-                    size_t size,
-                    int (*compare) (const void *, const
-void *))
-{
-  if (*ptree)
-    {
-      switch (compare (data, (*ptree)->data))
-        {
-        case -1:
-          return tree_insert_sorted (&(*ptree)->left,
-data, size, compare);
-        default:
-          return tree_insert_sorted (&(*ptree)->right,
-data, size, compare);
+
+// Fonction de réequilibrage spécifique à l'insert
+void tree_insert_reequilibrage(Tree *racine, Tree x) {
+  Tree oncle;
+  
+  while (x != *racine && couleur_noeud(x->parent) == RED) {
+      
+      // Si le parent de x est le fils gauche du grand-père
+      if (x->parent == x->parent->parent->left) {
+          oncle = x->parent->parent->right;
+          
+          // C1: L'oncle est ROUGE
+          if (couleur_noeud(oncle) == RED) {
+              x->parent->couleur.couleur = BLACK;
+              oncle->couleur.couleur = BLACK;
+              x->parent->parent->couleur.couleur = RED;
+              x = x->parent->parent; // On remonte
+          } 
+          // Cas2&3: L'oncle est NOIR
+          else {
+              // C2: x est un fils droit
+              if (x == x->parent->right) {
+                  x = x->parent;
+                  rotate_L(racine, x);
+              }
+              // C3: x est un fils gauche
+              x->parent->couleur.couleur = BLACK;
+              x->parent->parent->couleur.couleur = RED;
+              rotate_R(racine, x->parent->parent);
+          }
+      } 
+      else {
+          oncle = x->parent->parent->left;
+          
+          if (couleur_noeud(oncle) == RED) {
+              x->parent->couleur.couleur = BLACK;
+              oncle->couleur.couleur = BLACK;
+              x->parent->parent->couleur.couleur = RED;
+              x = x->parent->parent;
+          } else {
+              if (x == x->parent->left) {
+                  x = x->parent;
+                  rotate_R(racine, x);
+              }
+              x->parent->couleur.couleur = BLACK;
+              x->parent->parent->couleur.couleur = RED;
+              rotate_L(racine, x->parent->parent);
+          }
+      }
+  }
+  // La racine doit finir BLACK
+  (*racine)->couleur.couleur = BLACK;
+}
+
+bool tree_insert_sorted(Tree *ptree, const void *data, size_t size, int (*compare)(const void *, const void *)) {
+    Tree y = NULL;
+    Tree x = *ptree;
+
+    // Descente dans l'arbre pour trouver la position d'insertion
+    while (x != NULL) {
+        y = x;
+        if (compare(data, x->data) == -1) {
+            x = x->left;
+        } else {
+            x = x->right;
         }
     }
-  else
-    {
-      Tree new = tree_create (data, size);
-      if (new)
-        {
-          *ptree = new;
-          return true;
-        }
-      else
+
+    Tree new_node = tree_create(data, size, y);
+    // si creation échouer
+    if (new_node == NULL) {
         return false;
     }
 
+    if (y == NULL) {
+        *ptree = new_node;
+    } else if (compare(data, y->data) == -1) {
+        y->left = new_node;
+    } else {
+        y->right = new_node;
+    }
+
+    // Appel du rééquilibrage Rouge-Noir
+    tree_insert_reequilibrage(ptree, new_node);
+    
+    return true;
 }
 
 void *
@@ -357,7 +556,7 @@ tree_search (Tree tree,
         case 1:
           return tree_search (tree->right, data, compare);
         default:
-            return NULL; // RAJOUTE CAR WARNING !!!
+            return NULL;
         }
     }
   else

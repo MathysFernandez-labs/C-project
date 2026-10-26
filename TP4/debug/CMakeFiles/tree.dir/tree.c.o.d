@@ -1,5 +1,5 @@
 CMakeFiles/tree.dir/tree.c.o: \
- /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/tree.c \
+ /home/mathys/Bureau/project/C-project/TP4/src/tree.c \
  /usr/include/stdc-predef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -12,7 +12,8 @@ CMakeFiles/tree.dir/tree.c.o: \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/tree.h \
+ /usr/include/strings.h \
+ /home/mathys/Bureau/project/C-project/TP4/src/tree.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
@@ -44,4 +45,4 @@ CMakeFiles/tree.dir/tree.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
- /home/mathys/Bureau/S5/SDD/SDD-S5/TP4/src/min-max.h
+ /home/mathys/Bureau/project/C-project/TP4/src/min-max.h

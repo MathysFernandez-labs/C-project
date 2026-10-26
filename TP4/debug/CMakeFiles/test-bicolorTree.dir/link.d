@@ -2,7 +2,7 @@ test-bicolorTree: \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o \
-  CMakeFiles/test-bicolorTree.dir/test-tree.c.o \
+  CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o \
   libtree.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a \
   /usr/lib/gcc/x86_64-linux-gnu/13/libgcc_s.so \
@@ -32,7 +32,7 @@ test-bicolorTree: \
 
 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o:
 
-CMakeFiles/test-bicolorTree.dir/test-tree.c.o:
+CMakeFiles/test-bicolorTree.dir/test-bicolorTree.c.o:
 
 libtree.so:
 
