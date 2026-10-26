@@ -275,7 +275,7 @@ bool tree_remove(Tree *ptree, const void *data, size_t size, int (*compare)(cons
       z->parent->right = x;
   }
 
-  // violation couleur supprimé ? 
+  // violation couleur supprimé ?
   if (couleur_z_supprime == BLACK) {
     // On fait appel à la fonction de réequilibrage
     tree_delete_reequilibrage(ptree, x, parent_de_x);
