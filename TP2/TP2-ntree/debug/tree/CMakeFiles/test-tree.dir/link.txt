@@ -1,1 +1,0 @@
-/usr/bin/cc -g -Wl,--dependency-file=CMakeFiles/test-tree.dir/link.d "CMakeFiles/test-tree.dir/test-tree.c.o" -o test-tree  -Wl,-rpath,"/home/mathys/Bureau/S5/SDD/SDD-S5/TP2_bys/tp-ntree-moodle/tp-ntree-moodle 2/debug/tree" libtree.so
