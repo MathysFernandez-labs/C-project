@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -g -shared -Wl,--dependency-file=CMakeFiles/tree.dir/link.d -Wl,-soname,libtree.so -o libtree.so CMakeFiles/tree.dir/tree.c.o
