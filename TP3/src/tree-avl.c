@@ -5,6 +5,10 @@
 #include <stdbool.h>
 #include "min-max.h"
 
+// Forward declarations
+void rotate_L(Tree *tree);
+void rotate_R(Tree *tree);
+
 /*--------------------------------------------------------------------*/
 Tree tree_new ()
 {
@@ -62,7 +66,7 @@ void update_balance(Tree k2) {
 }
 
 // fonction pour supprimer un noeud sans supprimer ses enfants
-int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*delete) (void *), size_t size) {
+int tree_delete_node (Tree * tree, const void *data, int (*compare)(const void *, const void *), void (*delete) (void *), size_t size) {
   if (tree && *tree){
     // -1 ou 1 on continue de chercher
     // 0 on a trouvé alors on supprime
@@ -85,7 +89,7 @@ int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*dele
 
         // Pas d'enfant:
         if((*tree)->right == NULL && (*tree)->left == NULL) {
-          tree_delete_unit_node(*tree, delete);
+          tree_delete_unit_node(tree, delete);
           *tree = NULL;
         }
 
@@ -95,18 +99,18 @@ int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*dele
           Tree k2 = *tree;
           *tree = (*tree)->left;
           (*tree)->parent = k2->parent;
-          tree_delete_unit_node(k2, delete);
+          tree_delete_unit_node(&k2, delete);
           update_balance(*tree);
           
         }
 
         // 1 enfant:
         // A droite
-        if ((*tree)->right != NULL && (*tree)->left == NULL)) {
+        if ((*tree)->right != NULL && (*tree)->left == NULL) {
           Tree k2 = *tree;
           *tree = (*tree)->right;
           (*tree)->parent = k2->parent;
-          tree_delete_unit_node(k2, delete);
+          tree_delete_unit_node(&k2, delete);
           update_balance(*tree);
         }
 
@@ -120,7 +124,7 @@ int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*dele
             }
             k1->parent->right = NULL;
             memcpy((*tree)->data, k1->data, size);
-            tree_delete_unit_node(k1, delete);
+            tree_delete_unit_node(&k1, delete);
             update_balance(*tree);
           }
 
@@ -133,8 +137,8 @@ int tree_delete_node (Tree * tree, const void *data, int (*compare), void (*dele
 
             k1->right = k2->right;
             *tree = k1;
-            tree_delete_unit_node(k1, delete);
-            tree_delete_unit_node(k2, delete);
+            tree_delete_unit_node(&k1, delete);
+            tree_delete_unit_node(&k2, delete);
             update_balance(*tree);
           }
         }
@@ -388,7 +392,7 @@ void rotate_R (Tree *tree) {
   update_balance(k1);
 }
 
-bool tree_insert_sorted (Tree * ptree,const void *data,size_t size,int (*compare) (const void *, const void *)) {
+bool tree_insert_sorted (Tree * ptree, const void *data, size_t size, int (*compare) (const void *, const void *)) {
   if (*ptree) {
     bool result = false;
     switch (compare (data, (*ptree)->data))
@@ -513,7 +517,7 @@ tree_search (Tree tree, const void *data, int (*compare) (const void *, const vo
 }
 
 static void
-set (void *data,void *array)
+set (void *data, int balance, void *array)
 {
   static size_t size;
   static size_t offset;
@@ -552,7 +556,7 @@ compare))
           return false;
         }
     }
-  set (NULL, &size);
+  set (NULL, 0, &size);
   tree_in_order (tree, set, array);
   tree_delete (tree, NULL);
   return true;
