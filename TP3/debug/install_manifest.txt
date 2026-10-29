@@ -1,4 +1,0 @@
-/usr/local/lib/libtree-avl.so
-/usr/local/include/tree-avl.h
-/usr/local/share/pkgconfig/tree-avl.pc
-/usr/local/cmake/TreeConfig.cmake

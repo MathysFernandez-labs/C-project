@@ -1,9 +1,0 @@
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/tree.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/test-bicolorTree.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/test.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/edit_cache.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/rebuild_cache.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/list_install_components.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/install.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/install/local.dir
-/home/mathys/Bureau/project/C-project/TP4/debug/CMakeFiles/install/strip.dir
