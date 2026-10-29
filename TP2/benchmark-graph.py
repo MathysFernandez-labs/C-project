@@ -7,7 +7,7 @@ temps_recherche = []
 temps_suppression = []
 
 try:
-    with open("debug/mesures_bst.txt", "r") as fichier:
+    with open("debug/mesures_tree.txt", "r") as fichier:
         # Ignorer la première ligne
         next(fichier)
         
@@ -27,7 +27,7 @@ try:
     plt.plot(tailles_n, temps_suppression, label='Suppression', color='red', marker='^', markersize=4)
 
     # Personnalisation du graphique
-    plt.title("Performances de l'Arbre Binaire de Recherche (BST)")
+    plt.title("Performances de l'Arbre Binaire de Recherche")
     plt.xlabel("Nombre de données (N)")
     plt.ylabel("Temps d'exécution (secondes)")
     plt.grid(True, linestyle=':', alpha=0.7)
@@ -42,6 +42,6 @@ try:
     plt.show()
 
 except FileNotFoundError:
-    print("Erreur : Le fichier 'mesures_bst.txt' est introuvable.")
+    print("Erreur : Le fichier 'mesures_tree.txt' est introuvable.")
     
 
