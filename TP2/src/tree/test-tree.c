@@ -6,9 +6,6 @@
 
 #include "tree.h"
 
-// ============================================================
-// Type Dictionnaire (mot:def) pour tests génériques
-// ============================================================
 typedef struct {
     char *mot;
     char *def;
@@ -91,12 +88,8 @@ void testArbresBinaires(void){
     tree_delete(racine, 0);
 }
 
-/**
- * Test avec le type dictionnaire (Couple mot:def)
- * Démontre la généricité de l'arbre BST
- */
+
 void testArbresDictionnaire(void) {
-    printf("\n========== Test BST avec Dictionnaire (mot:def) ==========\n");
 
     Tree arbre = tree_new();
 
@@ -126,14 +119,12 @@ void testArbresDictionnaire(void) {
 
     // Pas de free sur les Couples car les chaînes sont sur le stack (littéraux)
     tree_delete(arbre, NULL);
-    printf("Test dictionnaire BST réussi !\n");
+    printf("Test dictionnaire réussi !\n");
 }
 
-// ============================================================
-// Benchmark - BST (entiers)
-// ============================================================
+
 void generer_mesures_bst() {
-    FILE *fichier = fopen("mesures_bst.txt", "w");
+    FILE *fichier = fopen("mesures_tree.txt", "w");
     if (fichier == NULL) {
         printf("Erreur lors de l'ouverture du fichier.\n");
         return;
@@ -163,7 +154,7 @@ void generer_mesures_bst() {
         }
         double temps_rech = (double)(clock() - debut_rech) / CLOCKS_PER_SEC;
 
-        // Suppression de l'arbre entier (pas de tree_remove unitaire dans le BST simple)
+        // Suppression de l'arbre entier
         clock_t debut_suppr = clock();
         tree_delete(arbre, NULL);
         double temps_suppr = (double)(clock() - debut_suppr) / CLOCKS_PER_SEC;
@@ -174,14 +165,12 @@ void generer_mesures_bst() {
     }
 
     fclose(fichier);
-    printf("Les mesures BST (entiers) ont été sauvegardées dans mesures_bst.txt\n");
+    printf("Les mesures(entiers) ont été sauvegardées\n");
 }
 
-// ============================================================
-// Benchmark - BST (dictionnaire mot:def)
-// ============================================================
+
 void generer_mesures_bst_dict() {
-    FILE *fichier = fopen("mesures_bst_dict.txt", "w");
+    FILE *fichier = fopen("mesures_tree_dict.txt", "w");
     if (fichier == NULL) {
         printf("Erreur lors de l'ouverture du fichier.\n");
         return;
@@ -230,7 +219,7 @@ void generer_mesures_bst_dict() {
     }
 
     fclose(fichier);
-    printf("Les mesures BST (dictionnaire) ont été sauvegardées dans mesures_bst_dict.txt\n");
+    printf("Les mesures (dictionnaire) ont été sauvegardées\n");
 }
 
 
