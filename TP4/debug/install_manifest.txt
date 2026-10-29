@@ -1,4 +1,0 @@
-/usr/local/lib/libtree.so
-/usr/local/include/tree.h
-/usr/local/share/pkgconfig/tree.pc
-/usr/local/cmake/TreeConfig.cmake
