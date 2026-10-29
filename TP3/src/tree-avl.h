@@ -10,9 +10,9 @@ struct _TreeNode
   {
     Tree left;
     Tree right;
-    char data[1];
     int balance;
     Tree parent;
+    char data[];
   };
 
 Tree tree_new ();

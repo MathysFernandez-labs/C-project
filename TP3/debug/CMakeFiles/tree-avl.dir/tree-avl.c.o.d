@@ -1,5 +1,5 @@
 CMakeFiles/tree-avl.dir/tree-avl.c.o: \
- /home/mathys/Bureau/S5/SDD/SDD-S5/TP3/src/tree-avl.c \
+ /home/mathys/Bureau/project/C-project/TP3/src/tree-avl.c \
  /usr/include/stdc-predef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -13,7 +13,7 @@ CMakeFiles/tree-avl.dir/tree-avl.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h \
- /home/mathys/Bureau/S5/SDD/SDD-S5/TP3/src/tree-avl.h \
+ /home/mathys/Bureau/project/C-project/TP3/src/tree-avl.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
@@ -45,4 +45,4 @@ CMakeFiles/tree-avl.dir/tree-avl.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
- /home/mathys/Bureau/S5/SDD/SDD-S5/TP3/src/min-max.h
+ /home/mathys/Bureau/project/C-project/TP3/src/min-max.h
