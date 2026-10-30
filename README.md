@@ -14,6 +14,6 @@ The main goal is to implement generic data structures (`void *`) and experimenta
 
 **Clone the repository and navigate to the build directory:**
    ```bash
-   git clone [https://github.com/MathysFernandez-labs/C-project.git](https://github.com/MathysFernandez-labs/C-project.git)
+   git clone https://github.com/MathysFernandez-labs/C-project.git
    cd C-project/
    ```
